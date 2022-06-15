@@ -24,28 +24,34 @@ function playRound(playerSelection, computerSelection) {
             return "draw";
         }
         else if (computerSelection === "scissor") {
+            playerScore++;
             return "Rock beats scissor. You win!";
         }
         else if (computerSelection === "paper") {
+            botScore++;
             return "Paper beats rock. You lose!"
         }
     }
     else if (playerInput === "scissor") {
         if (computerSelection === "rock") {
+            botScore++;
             return "Rock beats scissor. You lose!";
         }
         else if (computerSelection === "scissor") {
             return "Draw!";
         }
         else if (computerSelection === "paper") {
+            playerScore++;
             return "Scissor beats paper. You win!"
         }
     }
     else if (playerInput === "paper") {
         if (computerSelection === "rock") {
+            playerScore++;
             return "Paper beats rock. You win!";
         }
         else if (computerSelection === "scissor") {
+            botScore++;
             return "Scissor beats paper. You lose!";
         }
         else if (computerSelection === "paper") {
@@ -53,7 +59,7 @@ function playRound(playerSelection, computerSelection) {
         }
     }
     else {
-        return "invalid input"
+        return "invalid input: " + playerSelection;
     }
 
 }
@@ -61,14 +67,15 @@ function playRound(playerSelection, computerSelection) {
 /* const playerSelection = "ScissoR";
 const computerSelection = computerPlay();
 console.log(playRound(playerSelection, computerSelection)); */
-const computerSelection = computerPlay();
-let playerSelection = prompt("What do you choose?", "Rock, paper or scissor?");
-console.log(playRound(playerSelection, computerSelection));
 
+let playerScore;
+let botScore
 
 
 function game() {
-  
+
+    playerScore = 0;
+    botScore = 0;
     //call playRound()
     //play 5 rounds 
     //for loop
@@ -78,9 +85,26 @@ function game() {
 
 
     for (let i = 0; i < 5; i++) {
-        
-        // your code here!
-     }
 
+        // your code here!
+
+        const computerSelection = computerPlay();
+        let playerSelection = prompt("What do you choose?", "Rock, paper or scissor?");
+        console.log("Round " + (i + 1));
+        console.log(playerSelection.toUpperCase() + " VS. " + computerSelection.toUpperCase());
+        console.log(playRound(playerSelection, computerSelection));
+        console.log("You " + playerScore + " Bot " + botScore)
+    }
+
+    if(playerScore === botScore) {
+        console.log("Game Draw!");
+    }
+    else if(playerScore < botScore) {
+        console.log("You lost the game!");
+    }
+    else if(playerScore > botScore) {
+        console.log("You won the game!");
+    }
 }
 
+game();
