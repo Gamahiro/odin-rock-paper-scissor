@@ -74,8 +74,7 @@ let botScore
 
 function game() {
 
-    playerScore = 0;
-    botScore = 0;
+    
     //call playRound()
     //play 5 rounds 
     //for loop
@@ -83,6 +82,8 @@ function game() {
     //track score
     //report a winner or loser at the end
 
+    playerScore = 0;
+    botScore = 0;
 
     for (let i = 0; i < 5; i++) {
 
