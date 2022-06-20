@@ -1,5 +1,10 @@
 const results = document.getElementById("results");
 
+const gameImg = document.querySelector("#gameImg");
+
+const playerImg = document.getElementById("playerImg");
+const botImg = document.getElementById("botImg");
+
 const buttons = document.querySelectorAll('button');
 
 const roundResult = document.createElement('p');
@@ -12,6 +17,8 @@ const gameScore = document.createElement('p');
 
 const roundScore = document.createElement('p');
 
+
+
 const btnPlay = document.querySelector('#btnPlay');
 const btnRock = document.querySelector('#btnRock');
 const btnPaper = document.querySelector('#btnPaper');
@@ -19,10 +26,9 @@ const btnScissor = document.querySelector('#btnScissor');
 
 
 
-let playerScore;
-let botScore;
 
 
+// 
 
 
 
@@ -39,13 +45,14 @@ function computerPlay() {
     ranNum = Math.floor(Math.random() * 4);
 
     if (ranNum <= 1) {
-        showComputerSelection.textContent = "Bot chose rock!";
+
+        botImg.src="./assets/rock.png";
         return "rock";
     } else if (ranNum <= 2) {
-        showComputerSelection.textContent = "Bot chose paper!";
+        botImg.src="./assets/paper.png";
         return "paper";
     } else {
-        showComputerSelection.textContent = "Bot chose scissor!";
+        botImg.src="./assets/scissor.png";
         return "scissor";
     }
 }
@@ -64,12 +71,20 @@ function gameOver() {
     results.appendChild(gameScore);
     if (playerScore > botScore) {
         gameScore.textContent = "YOU WON THE GAME!";
+        playerImg.src="./assets/happy.png";
+        botImg.src="./assets/sad.png";
+        
+
     }
     else if (playerScore < botScore) {
         gameScore.textContent = "YOU LOST THE GAME!";
+        playerImg.src="./assets/sad.png";
+        botImg.src="./assets/happy.png";
     }
     btnPlay.addEventListener('click', game);
     btnPlay.style.display = "block";
+    botImg.src="";
+    playerImg.src="";
 }
 
 
@@ -82,7 +97,7 @@ function playRound(playerSelection) {
     computerSelection = computerPlay();
 
     if (playerSelection === "btnRock") {
-        showPlayerSelection.textContent = "You chose rock!";
+        playerImg.src="./assets/rock.png";
         console.log(playerScore + " " + botScore);
         if (computerSelection === "rock") {
             roundResult.textContent = "draw";
@@ -94,7 +109,7 @@ function playRound(playerSelection) {
                 gameOver();
             }
         }
-        else if (computerSelection === "paper") {
+        else if (computerSelection === "paper") {   
             botScore++;
             roundResult.textContent = "Paper beats rock. You lose!"
             if (botScore >= 5) {
@@ -105,7 +120,7 @@ function playRound(playerSelection) {
     }
 
     else if (playerSelection === "btnScissor") {
-        showPlayerSelection.textContent = "You chose scissor!";
+        playerImg.src="./assets/scissor.png";
         if (computerSelection === "rock") {
             botScore++;
             roundResult.textContent = "Rock beats scissor. You lose!";
@@ -126,7 +141,7 @@ function playRound(playerSelection) {
     }
 
     else if (playerSelection === "btnPaper") {
-        showPlayerSelection.textContent = "You chose paper!";
+        playerImg.src="./assets/paper.png";
         if (computerSelection === "rock") {
             playerScore++;
             roundResult.textContent = "Paper beats rock. You win!";
@@ -153,13 +168,15 @@ function playRound(playerSelection) {
 //enable rps buttons
 
 function game() {
-    console.log("game activated");
+    console.log("game activated test");
 
     btnPlay.removeEventListener('click', game);
     btnPlay.style.display = "none";
+
     btnRock.style.display = "block";
     btnPaper.style.display = "block";
     btnScissor.style.display = "block";
+    gameImg.style.display = "flex";
 
     playerScore = 0;
     botScore = 0;
@@ -182,8 +199,11 @@ function game() {
 
 }
 
+let playerScore;
+let botScore;
 
 btnPlay.addEventListener('click', game);
 btnRock.style.display = "none";
 btnPaper.style.display = "none";
 btnScissor.style.display = "none";
+gameImg.style.display = "none";
