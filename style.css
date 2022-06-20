@@ -6,8 +6,8 @@ body {
 
 
 .button {
-    height: 25vw;
-    width: 25vw;
+    height: 15vw;
+    width: 15vw;
     border: 2px black solid;
     border-radius: 15px;
     margin: 5px;
@@ -29,7 +29,7 @@ body {
 }
 
 #results {
-    font-size: 3vw;
+    font-size: 2vw;
     text-align: center;
     font-weight: bolder;
 }
@@ -69,8 +69,8 @@ body {
 
 #gameImg {
     flex-shrink: 0;
-    font-size: 3vw;
-    height: 35vw;
+    font-size: 2vw;
+    height: 35vh;
     width: 45vw;
     display: flex;
     justify-content: space-between;
@@ -81,7 +81,7 @@ body {
 .playerSpace {
     flex-shrink: 0;
     width: 25vw;
-    height: 25vw;
+    height: 25vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -93,7 +93,7 @@ body {
 .botSpace {
     flex-shrink: 0;
     width: 25vw;
-    height: 25vw;
+    height: 25vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -103,5 +103,5 @@ body {
 
 
 img {
-    width: 20vw;
+    width: 10vw;
 }
