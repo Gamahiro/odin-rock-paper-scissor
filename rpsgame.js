@@ -83,8 +83,6 @@ function gameOver() {
     }
     btnPlay.addEventListener('click', game);
     btnPlay.style.display = "block";
-    botImg.src="";
-    playerImg.src="";
 }
 
 
